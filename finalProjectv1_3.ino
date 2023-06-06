@@ -43,6 +43,11 @@ void loop() {
 
   //Read and ennumerate input pattern
   capacitanceReader();
+
+    Serial.print("Correct Pattern 2: ");
+  for(int i = 0; i < sizeof(colorPattern)/sizeof(int); i++){
+    Serial.print(colorPattern[i]);
+  }
   
   
   Serial.println();
@@ -51,8 +56,14 @@ void loop() {
     Serial.print(inputPattern[i]);
   }
 
+    Serial.print("Correct Pattern 3: ");
+  for(int i = 0; i < sizeof(colorPattern)/sizeof(int); i++){
+    Serial.print(colorPattern[i]);
+  }
+
   Serial.println();
   Serial.println("Checking Accuracy");
+  
   //Compares Patterns and adjusts score
   patternCompare();
 
@@ -150,7 +161,7 @@ void capacitanceReader(){
       for(int i = 1; i < 8; i++){
         if(capValues[i-1] > CAP_THRESHOLD){
           inputPattern[inputCounter] = i;
-          // Serial.print(inputPattern[inputCounter]);
+          Serial.print(inputPattern[inputCounter]);
           inputCounter++;
           delay(250);
         }
@@ -163,8 +174,12 @@ void capacitanceReader(){
 void patternCompare(){
   // Finds total Error
   errorCount = 0;
-  for(int i = 0; i < sizeof(colorPattern)/sizeof(int); i++){
+  Serial.println(colorPattern[0]);
+  Serial.println(sizeof(colorPattern) / sizeof(int));
+  for(int i = 0; i < sizeof(colorPattern)/sizeof(int); ++i){
+    Serial.print("Color Pattern: ");
     Serial.println(colorPattern[i]);
+    Serial.print("Input Pattern: ");
     Serial.println(inputPattern[i]);
     
     // if(colorPattern[i] != inputPattern[i]){
