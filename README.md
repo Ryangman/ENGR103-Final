@@ -6,7 +6,16 @@ In this game, Lights will blink in a random pattern, and you must use the Capaci
 
 #### Rules
 <strong>Active touch sensors:</strong> A1, A2, A3, A4, A5, A6, A7
-<strong>Slide Swithc</strong> Volume control
-
+<br>
+<strong>Slide Switch</strong> Volume control
+<br><br>
 <strong>LEDS</strong> Pattern and Score display
+<br>
 <strong>Speaker</strong> Feedback for inputs 
+
+#### Important Notes
+
+Games uses 2 LEDs nearest edge of each side
+<br>
+Games works best holding device with power cord down
+
