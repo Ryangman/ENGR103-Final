@@ -49,11 +49,11 @@ void loop() {
     CircuitPlayground.clearPixels();
     
     //Pause between Allowing Inputs
-    delay(750);
+    delay(250);
    
     for(int i = 0; i < 10; i++){
-      CircuitPlayground.setPixelColor(i,0,255,0);
-      delay(10);
+      CircuitPlayground.setPixelColor(i,255,255,255);
+      
     }
     
 
@@ -225,7 +225,7 @@ void capacitanceReader(){
 
 void patternCompare(){
   // Finds total Error
-  
+  int initErrorCount = errorCount;
   for(int i = 0; i < sizeof(colorPattern)/sizeof(int); ++i){
     // Serial.print("Color Pattern: ");
     // Serial.println(colorPattern[i]);
@@ -238,7 +238,17 @@ void patternCompare(){
       Serial.println(i);
     }
   }
-
+  if(errorCount == initErrorCount){
+    for(int i = 0; i < 10; i++){
+      CircuitPlayground.setPixelColor(i,0,255,0);
+      delay(25);
+    }
+  } else{
+    for(int i = 0; i < 10; i++){
+      CircuitPlayground.setPixelColor(i,255,0,0);
+      delay(25);
+    }
+  }
   levelCounter++;
 }
 
