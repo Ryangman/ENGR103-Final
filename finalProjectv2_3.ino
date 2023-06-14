@@ -24,6 +24,7 @@ void setup() {
   while(!Serial);
 
   generateMIDI();
+  randomSeed(0);
 
   attachInterrupt(digitalPinToInterrupt(switchPin), checkSwitch, CHANGE);
 }
@@ -133,7 +134,8 @@ void patternAnimation(){
     int levelsRemaining =  5-levelCounter;
     //Powers Correct LED
     CircuitPlayground.setPixelColor(ledPath,119, 56, 207);
-    delay(100+(levelsRemaining * 100));
+    CircuitPlayground.playTone(midi[60], 50);
+    delay(levelsRemaining * 100);
   }
 }
 void capacitanceReader(){
@@ -254,7 +256,7 @@ void patternCompare(){
 
 void scoreSystem(){
   CircuitPlayground.clearPixels();
-  score = map(errorCount, 0, 20, 10, 0);
+  score = map(errorCount, 0, 15, 10, 1);
   Serial.println(score);
 
   for(int i = 0; i < score; i++){
